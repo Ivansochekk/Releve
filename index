@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RELEVÉ - Профессиональная танцевальная школа</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #FFD700;
+            --purple: #6A1B9A;
+            --dark: #2A0944;
+            --light: #F8F0FB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(45deg, var(--purple), var(--dark));
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="%23F8F0FB"/></svg>');
+            background-size: 50px;
+            opacity: 0.1;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .nav-container {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .tabs {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--purple);
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab:hover {
+            background: rgba(106,27,154,0.1);
+        }
+
+        .tab.active {
+            border-bottom: 3px solid var(--purple);
+            color: var(--dark);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--purple);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            padding: 2rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--light), white);
+            border: 2px solid var(--purple);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .age-group {
+            background: var(--purple);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 2rem auto;
+            font-weight: 700;
+        }
+
+        .address {
+            text-align: center;
+            font-size: 1.2rem;
+            padding: 2rem;
+            background: var(--dark);
+            color: white;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            padding: 2rem;
+            background: rgba(106,27,154,0.1);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        @media (max-width: 768px) {
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 2rem;
+            }
+
+            .logo {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1 class="logo">RELEVÉ</h1>
+        <p>Профессиональная танцевальная школа</p>
+    </div>
+
+    <div class="nav-container">
+        <div class="tabs">
+            <div class="tab active" data-tab="about">О нас</div>
+            <div class="tab" data-tab="directions">Направления</div>
+            <div class="tab" data-tab="benefits">Преимущества</div>
+            <div class="tab" data-tab="contact">Контакты</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- О нас -->
+        <div id="about" class="tab-content active">
+            <section class="section">
+                <h2>🌟 Стань частью команды победителей!</h2>
+                <p class="highlight-text">RELEVÉ - сформировавшийся крупный коллектив с авторской методикой обучения и профессиональным педагогическим составом, по-настоящему любящим детей и свое дело!</p>
+
+                <div class="age-group">Набор детей от 3 до 17 лет</div>
+
+                <div class="grid">
+                    <div class="card">
+                        <div class="icon">🎯</div>
+                        <h3>Наша философия</h3>
+                        <p>Качество обучения, постоянное развитие и дисциплина - основа нашего успеха!</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="icon">🏆</div>
+                        <h3>Наши достижения</h3>
+                        <p>Победители международных и всероссийских чемпионатов и конкурсов</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="icon">❤️</div>
+                        <h3>Наша гордость</h3>
+                        <p>Воспитание трудолюбивых, ответственных и сильных личностей через танец</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Направления -->
+        <div id="directions" class="tab-content">
+            <section class="section">
+                <h2>Наши направления</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Классический танец</h3>
+                        <p>Основа всех танцевальных направлений, развитие грации и техники</p>
+                    </div>
+                    <div class="card">
+                        <h3>Jazz</h3>
+                        <p>Энергичный и эмоциональный стиль с элементами импровизации</p>
+                    </div>
+                    <div class="card">
+                        <h3>Modern</h3>
+                        <p>Современные техники движения с акцентом на выразительность</p>
+                    </div>
+                    <div class="card">
+                        <h3>Contemporary</h3>
+                        <p>Свобода самовыражения через соединение различных стилей</p>
+                    </div>
+                    <div class="card">
+                        <h3>Эстрадный танец</h3>
+                        <p>Яркие постановки с элементами театрализации</p>
+                    </div>
+                    <div class="card">
+                        <h3>Танцевальное шоу</h3>
+                        <p>Зрелищные номера с сложной хореографией и сюжетом</p>
+                    </div>
+                    <div class="card">
+                        <h3>Акробатика</h3>
+                        <p>Развитие силы, гибкости и координации для танцоров</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Преимущества -->
+        <div id="benefits" class="tab-content">
+            <section class="section">
+                <h2>💡 Зачем заниматься танцами?</h2>
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <h3>🌎 Новый мир</h3>
+                        <p>Вдохновение, творчество и радость побед для всей семьи</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>🤸🏼‍♀️ Физическое развитие</h3>
+                        <p>Красивое и грациозное тело через правильные нагрузки</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>🎭 Творчество</h3>
+                        <p>Незабываемые эмоции и путешествия с командой</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>👯‍♀️ Социализация</h3>
+                        <p>Находите друзей и единомышленников</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>💃 Уверенность</h3>
+                        <p>Повышение самооценки через сценический опыт</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>🏅 Достижения</h3>
+                        <p>Возможность участия в конкурсах и фестивалях</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Контакты -->
+        <div id="contact" class="tab-content">
+            <section class="section">
+                <h2>📞 Контакты</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="icon">📍</div>
+                        <h3>Адрес</h3>
+                        <p>ул. Буденного, д.100</p>
+                        <p>Танцевальный центр "RELEVÉ"</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">📱</div>
+                        <h3>Телефон</h3>
+                        <p>+7 (910) 555-99-60</p>
+                        <p>Ежедневно с 13:00 до 20:00</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">✉️</div>
+                        <h3>Email</h3>
+                        <p>releve.mir@mail.ru</p>
+                        <p>Ответим на все ваши вопросы</p>
+                    </div>
+                </div>
+
+                <div class="address">
+                    ⭐️ Запишитесь на пробное занятие прямо сейчас! ⭐️
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 RELEVÉ Dance Company. Все права защищены</p>
+        <div style="margin-top: 2rem;">
+            <a href="https://vk.com/relevedance71" style="color: var(--gold); margin: 0 1rem;">ВКонтакте</a>
+            <a href="#" style="color: var(--gold); margin: 0 1rem;">Instagram</a>
+            <a href="https://t.me/relevedance" style="color: var(--gold); margin: 0 1rem;">Telegram</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Удаляем активный класс у всех вкладок и контента
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Добавляем активный класс к выбранной вкладке и соответствующему контенту
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
